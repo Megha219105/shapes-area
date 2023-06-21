@@ -13,14 +13,14 @@ public class Helper {
     public static List<JSONObject> getRecords(String[] args) {
         List<JSONObject> records = new ArrayList<>();
 
-        try {
-            Arrays.asList(args)
-                    .stream()
-                    .forEach(str -> records.add(new JSONObject(str)));
-        } catch (Exception e) {
-            System.out.println("The batch failed due to exception "+ e);
-            return null;
+        for(String str : args) {
+            try {
+                records.add(new JSONObject(str));
+            } catch (Exception e) {
+                System.out.println("The input failed due to exception "+ e);
+            }
         }
+
         return records;
     }
 

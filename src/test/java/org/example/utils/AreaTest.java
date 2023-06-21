@@ -93,7 +93,8 @@ class AreaTest {
         return Stream.of(
                 Arguments.of("{\"type\": \"triangle\", \"base\": 2, \"height\": 3}\n" , 3.00),
                 Arguments.of("{\"type\": \"square\", \"side\": 4}\n", 16.00),
-                Arguments.of("{\"type\": \"something\", \"side\": 4}\n", 0.00)
+                Arguments.of("{\"type\": \"something\", \"side\": 4}\n", 0.00),
+                Arguments.of("{\"type\": \"square\", \"height\": 4}\n", 0.00)
         );
     }
 }

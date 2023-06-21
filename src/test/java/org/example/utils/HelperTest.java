@@ -55,21 +55,16 @@ class HelperTest {
     }
 
     @Test
-    void verifyThrowsNullException() {
+    void verifyUseValidData() {
 
         String input = "{\"type\": \"triangle\", \"base\": , \"height\": 3}\n" +
-                "{\"type\": \"circle\", \"radius\": 4}";
+                "{\"type\": \"circle\", \"radius\": 4}\n" + "Something else";
 
         List<JSONObject> inputs = Helper.getRecords(getStrArray(input));
-        assertNull(inputs);
+        assertNotNull(inputs);
+        double area = Helper.getTotalArea(inputs);
 
-        Exception ex = assertThrows(
-                NullPointerException.class, () -> {
-                    Helper.getTotalArea(inputs);
-                }
-        );
-
-        assertTrue(ex.getMessage().contains("null"));
+        assertEquals(50.24, area);
 
     }
 

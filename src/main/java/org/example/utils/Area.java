@@ -42,17 +42,20 @@ public class Area {
         String type = record.getString("type");
         Shape shapeType = Shape.valueOfShape(type);
 
+        try {
+            if (shapeType.name().equalsIgnoreCase(shape.RECTANGLE.name())) {
+                result = getRectangleArea(record);
+            } else if (shapeType.name().equalsIgnoreCase(shape.TRIANGLE.name())) {
+                result = getTriangleArea(record);
+            } else if (shapeType.name().equalsIgnoreCase(shape.CIRCLE.name())) {
+                result = getCircleArea(record);
+            } else if (shapeType.name().equalsIgnoreCase(shape.SQUARE.name())) {
+                result = getSquareArea(record);
+            }
+        } catch (Exception e) {
+            System.out.println("The Area can not be calculated because of " + e);
 
-        if(shapeType.name().equalsIgnoreCase(shape.RECTANGLE.name())) {
-            result = getRectangleArea(record);
-        } else if (shapeType.name().equalsIgnoreCase(shape.TRIANGLE.name())) {
-            result = getTriangleArea(record);
-        } else if (shapeType.name().equalsIgnoreCase(shape.CIRCLE.name())) {
-            result = getCircleArea(record);
-        } else if (shapeType.name().equalsIgnoreCase(shape.SQUARE.name())) {
-            result = getSquareArea(record);
         }
-
         return result;
     }
 
